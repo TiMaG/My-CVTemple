@@ -1,8 +1,8 @@
-//Menu lateral
+//Side menu
 var menu_visible = false;
 let menu = document.getElementById("nav");
 function mostrarOcultarMenu(){
-    if(menu_visible==false){//si esta oculto
+    if(menu_visible==false){
         menu.style.display = "block";
         menu_visible = true;
     }
@@ -11,7 +11,7 @@ function mostrarOcultarMenu(){
         menu_visible = false;
     }
 }
-//oculto el menu una vez que selecciono una opción
+//hides the menu once an option is selected
 let links = document.querySelectorAll("nav a");
 for(var x = 0; x <links.length;x++){
     links[x].onclick = function(){
@@ -20,7 +20,7 @@ for(var x = 0; x <links.length;x++){
     }
 }
 
-//Creo las barritas de una barra particular identificada por su id
+//Create the bars of a particular bar identified by its id
 function crearBarra(id_barra){
     for(i=0;i<=16;i++){
         let div = document.createElement("div");
@@ -29,7 +29,7 @@ function crearBarra(id_barra){
     }
 }
 
-//selecciono todas las barras generales par aluego manipularlas
+//select all general bars to then manipulate them
 let html = document.getElementById("html");
 crearBarra(html);
 let javascript = document.getElementById("javascript");
@@ -43,14 +43,16 @@ crearBarra(php);
 let ilustrator = document.getElementById("ilustrator");
 crearBarra(ilustrator);
 
-//Ahora voy a guardar la cantidad de barritas que se van a ir pintando por cada barar
-//para eso utilizo un arreglo, cada posiciòn pertenece a un elemento
-//comienzan en -1 porque no tiene ninguna pintada al iniciarse
+//Now I am going to save the amount of bars that are going to be painted for each bar
+//for that I use an array, each position belongs to an element
+//start at -1 because it doesn't have any paint on startup
 let contadores = [-1,-1,-1,-1,-1,-1];
-//esta variable la voy a utilizar de bandera para saber si ya ejecuto la animación
+// I am going to use this variable as a flag to know if I already execute the animation
 let entro = false;
 
-//función que aplica las animaciones de la habilidades
+
+
+//function that applies the animations of the abilities
 function efectoHabilidades(){
     var habilidades = document.getElementById("habilidades");
     var distancia_skills = window.innerHeight - habilidades.getBoundingClientRect().top;
@@ -77,7 +79,7 @@ function efectoHabilidades(){
     }
 }
 
-//lleno una barra particular con la cantidad indicada
+//fill a particular bar with the specified amount
 function pintarBarra(id_barra, cantidad, indice, interval){
     contadores[indice]++;
     x = contadores[indice];
@@ -88,8 +90,7 @@ function pintarBarra(id_barra, cantidad, indice, interval){
         clearInterval(interval)
     }
 }
-
-//detecto el scrolling del mouse para aplicar la animación de la barra
+//detect mouse scrolling to apply bar animation
 window.onscroll = function(){
     efectoHabilidades();
 }
